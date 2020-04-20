@@ -1,17 +1,76 @@
 {
-  "name": "ytplaylist",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "progress": "^2.0.1",
-    "youtube-mp3-downloader": "^0.5.3",
-    "youtube-playlist": "^1.0.1"
-  }
+	"name": "ytplaylist",
+	"version": "2.0.0",
+	"description": "Download Your Youtube Playlist to MP3 Smoothly",
+	"keywords": [
+		"Youtube",
+		"Playlist",
+		"Download",
+		"MP3"
+	],
+	"author": "Shreeji Pedhadiya",
+	"license": "MIT",
+	"main": "index.js",
+	"bin": {
+		"myCli": "dist/index.js"
+	},
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"start": "node dist/index.js",
+		"watch": "tsc -w",
+		"build": "tsc",
+		"test": "jest",
+		"lint": "eslint --ext .ts --ext .js src tests",
+		"prepublish": "yarn build",
+		"smooth-release": "smooth-release",
+		"precommit": "lint-staged"
+	},
+	"devDependencies": {
+		"@types/chalk": "^2.2.0",
+		"@types/inquirer": "^6.5.0",
+		"@types/jest": "^25.2.1",
+		"@types/node": "^13.13.0",
+		"@types/node-emoji": "^1.8.1",
+		"@types/yargs": "^15.0.4",
+		"babel-eslint": "^10.1.0",
+		"bdd-stdin": "^0.2.0",
+		"eslint": "^6.8.0",
+		"eslint-config-buildo": "^0.2.2",
+		"eslint-config-prettier": "^6.10.1",
+		"jest": "^25.4.0",
+		"lint-staged": "^10.1.6",
+		"prettier": "^2.0.4",
+		"test": "^0.6.0",
+		"ts-jest": "^25.4.0",
+		"typescript": "^3.8.3",
+		"typescript-eslint-parser": "^22.0.0"
+	},
+	"dependencies": {
+		"chalk": "^4.0.0",
+		"husky": "^4.2.5",
+		"inquirer": "^7.1.0",
+		"node-emoji": "^1.10.0",
+		"yargs": "^15.3.1"
+	},
+	"lint-staged": {
+		"*.ts": [
+			"prettier --single-quote=true --write",
+			"git add"
+		]
+	},
+	"jest": {
+		"transform": {
+			"^.+\\.tsx?$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+		},
+		"testRegex": "(/__tests__/.*|\\.(test|spec))\\.(tsx?|jsx?)$",
+		"moduleFileExtensions": [
+			"ts",
+			"tsx",
+			"js",
+			"json",
+			"jsx"
+		]
+	}
 }
